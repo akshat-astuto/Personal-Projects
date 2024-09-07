@@ -10,16 +10,16 @@ export const BodyItem = ({
 }: {
   column: ColumnDefinition<unknown>;
   item: any;
-  getRowProps?: (id: string) => Record<string, any>;
+  getRowProps?: (props: any) => Record<string, any>;
 }) => {
   const CellComponent = displayMapVsCell[column.cell];
   const id = column.accessorKey;
-  const cellProps = getRowProps ? getRowProps(id) : {};
+  const cellProps = getRowProps ? getRowProps({column, item, id})?.[id] : {};
   const {
     className: tableCellClassName,
     cellClassName: cellComponentClassName,
     ...filteredCellProps
-  } = cellProps;
+  } = cellProps || {};
 
   return (
     <TableCell className={tableCellClassName}>
@@ -39,16 +39,16 @@ export const RenderBody = ({
   schema: Schema<any>;
   data: any[];
   className?: string;
-  getRowProps?: (id: string) => Record<string, any>;
+  getRowProps?: (props: any) => Record<string, any>;
 }) => {
   return (
     <TableBody className={className}>
-      {data.map((item) => (
-        <TableRow key={item.accessorKey}>
+      {data.map((item, index) => (
+        <TableRow key={`${item.accessorKey}-${index}`}>
           {schema.columns.map((column: ColumnDefinition<unknown>) => (
             <BodyItem
-              key={column.accessorKey}
-              column={column}
+            key={`${item.id || index}-${column.accessorKey}`}
+            column={column}
               item={item}
               getRowProps={getRowProps}
             />

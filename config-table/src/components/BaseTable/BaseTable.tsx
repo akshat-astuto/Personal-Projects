@@ -16,8 +16,8 @@ const BaseTable = ({
   data: any[];
   className?: string;
   classes?: Record<string, string>;
-  getColumnProps?: (id: string) => Record<string, any>;
-  getRowProps?: (id: string) => Record<string, any>;
+  getColumnProps?: (props: any) => Record<string, any>;
+  getRowProps?: (props: any) => Record<string, any>;
 }) => {
   const { caption } = schema;
 

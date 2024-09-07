@@ -8,11 +8,11 @@ export const HeaderItem = ({
   getColumnProps,
 }: {
   column: ColumnDefinition<unknown>;
-  getColumnProps?: (id: string) => Record<string, any>;
+  getColumnProps?: (props: any) => Record<string, any>;
 }) => {
   const id = column.accessorKey;
-  const cellProps = getColumnProps ? getColumnProps(id) : {};
-  const { className, ...filteredProps } = cellProps;
+  const cellProps = getColumnProps ? getColumnProps({column, id})?.[id] : {};
+  const { className, ...filteredProps } = cellProps || {};
 
   return (
     <TableHead className={cn("bg-gray-100", className)} {...filteredProps}>
@@ -28,7 +28,7 @@ export const RenderHeader = ({
 }: {
   schema: Schema<any>;
   className?: string;
-  getColumnProps?: (id: string) => Record<string, any>;
+  getColumnProps?: (props: any) => Record<string, any>;
 }) => {
   return (
     <TableHeader className={className}>

@@ -1,41 +1,48 @@
 export const invoices = [
   {
+    id: 101,
     invoice: "INV001",
     paymentStatus: "Paid",
     totalAmount: "$250.00",
     paymentMethod: "Credit Card",
   },
   {
+    id: 102,
     invoice: "INV002",
     paymentStatus: "Pending",
     totalAmount: "$150.00",
     paymentMethod: "PayPal",
   },
   {
+    id: 103,
     invoice: "INV003",
     paymentStatus: "Unpaid",
     totalAmount: "$350.00",
     paymentMethod: "Bank Transfer",
   },
   {
+    id: 104,
     invoice: "INV004",
     paymentStatus: "Paid",
     totalAmount: "$450.00",
     paymentMethod: "Credit Card",
   },
   {
+    id: 105,
     invoice: "INV005",
     paymentStatus: "Paid",
     totalAmount: "$550.00",
     paymentMethod: "PayPal",
   },
   {
+    id: 106,
     invoice: "INV006",
     paymentStatus: "Pending",
     totalAmount: "$200.00",
     paymentMethod: "Bank Transfer",
   },
   {
+    id: 107,
     invoice: "INV007",
     paymentStatus: "Unpaid",
     totalAmount: "$300.00",
