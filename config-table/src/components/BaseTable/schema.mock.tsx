@@ -20,7 +20,7 @@ export const schema = {
     {
       title: "Payment Method",
       accessorKey: "paymentMethod",
-      cell: DISPLAY_MAP.TEXT,
+      cell: DISPLAY_MAP.INPUT,
     },
   ],
   caption: "A list of your recent invoices.",

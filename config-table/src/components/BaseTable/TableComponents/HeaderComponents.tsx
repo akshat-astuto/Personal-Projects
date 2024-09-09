@@ -11,7 +11,7 @@ export const HeaderItem = ({
   getColumnProps?: (props: any) => Record<string, any>;
 }) => {
   const id = column.accessorKey;
-  const cellProps = getColumnProps ? getColumnProps({column, id})?.[id] : {};
+  const cellProps = getColumnProps ? getColumnProps({ column, id })?.[id] : {};
   const { className, ...filteredProps } = cellProps || {};
 
   return (

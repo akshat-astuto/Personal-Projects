@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { RenderHeader, Table, TableCaption } from "./TableComponents";
-import { RenderBody } from "./TableComponents/BodyComponents";
+import { memo, useMemo, useState, useCallback } from "react";
+import {
+  RenderBody,
+  RenderHeader,
+  Table,
+  TableCaption,
+} from "./TableComponents";
 import { Schema } from "./utils/types";
 import cn from "classnames";
 
@@ -21,8 +26,30 @@ const BaseTable = ({
 }) => {
   const { caption } = schema;
 
+  const initialTableState = useMemo(() => {
+    return {
+      selectedRows: [],
+      rowData: data,
+    };
+  }, [data]);
+
+  const [tableState, setTableState] = useState(initialTableState);
+
+  const updateCellValue = useCallback(
+    (index: number, id: string, value: any) => {
+      setTableState((prev) => {
+        const newRowData = [...prev.rowData];
+        newRowData[index] = { ...newRowData[index], [id]: value };
+        return { ...prev, rowData: newRowData };
+      });
+    },
+    []
+  );
+
+  console.log(tableState);
+
   return (
-    <Table className={cn(className, "border border-gray-200")}>
+    <Table className={cn(className, "border border-gray-200")} key={1}>
       <TableCaption className={classes?.caption}>{caption}</TableCaption>
       <RenderHeader
         schema={schema}
@@ -31,12 +58,13 @@ const BaseTable = ({
       />
       <RenderBody
         schema={schema}
-        data={data}
+        data={tableState.rowData}
         className={classes?.body}
         getRowProps={getRowProps}
+        updateCellValue={updateCellValue}
       />
     </Table>
   );
 };
 
-export default BaseTable;
+export default memo(BaseTable);

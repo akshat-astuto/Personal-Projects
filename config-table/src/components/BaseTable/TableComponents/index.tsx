@@ -10,3 +10,4 @@ export {
 } from "./atoms";
 
 export { HeaderItem, RenderHeader } from "./HeaderComponents";
+export { BodyItem, RenderBody } from "./BodyComponents";
