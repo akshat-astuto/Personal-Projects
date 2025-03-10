@@ -1,0 +1,11 @@
+.gradient_background_hour {
+    background-image: linear-gradient(red 50%, transparent 50%);
+}
+
+.gradient_background_minute {
+    background-image: linear-gradient(green 50%, transparent 50%);
+}
+
+.gradient_background_second {
+    background-image: linear-gradient(blue 50%, transparent 50%);
+}
