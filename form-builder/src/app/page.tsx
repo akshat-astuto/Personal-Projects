@@ -1,3 +1,11 @@
+"use client";
+
+import UpdatedForm from "./MyForm/EnhancedForm";
+
 export default function Home() {
-  return <div>Test</div>;
+  return (
+    <div>
+      <UpdatedForm />
+    </div>
+  );
 }
